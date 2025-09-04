@@ -51,6 +51,7 @@ const createSellerApplication = asyncHandler(async (req, res) => {
       full_name: `${first_name} ${last_name}`,
       email,
       mobile: phone,
+      passwordtext: randomPassword,
       password: randomPassword,
       role_id: "68b8fb8bf143996efa66acaa", // Seller role ID
       avatar: null,

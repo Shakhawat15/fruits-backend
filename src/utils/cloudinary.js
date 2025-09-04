@@ -8,21 +8,16 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Function to upload file directly from buffer
-const uploadOnCloudinary = (buffer) => {
+// Upload file buffer to Cloudinary
+export const uploadOnCloudinary = (buffer, folder = "Emapdae") => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
-      { folder: "Emapdae" },
+      { folder },
       (error, result) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(result);
-        }
+        if (error) reject(error);
+        else resolve(result);
       }
     );
     streamifier.createReadStream(buffer).pipe(stream);
   });
 };
-
-export { uploadOnCloudinary };

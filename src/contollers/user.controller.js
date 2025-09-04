@@ -25,7 +25,7 @@ const generateAccessAndRefreshToken = async (userId) => {
 
 // Reister User
 const registerUser = asyncHandler(async (req, res) => {
-  const { role_id, district, full_name, email, mobile, password } = req.body;
+  const { role_id, full_name, email, mobile, password } = req.body;
 
   if (
     [full_name, email, mobile, password].some((field) => field?.trim() === "")
@@ -129,8 +129,7 @@ const loginUser = asyncHandler(async (req, res) => {
 const getAllUsers = asyncHandler(async (req, res) => {
   const users = await UserModel.find()
     .select("-password -refresh_token")
-    .populate("role_id") // Populating role details
-    .populate("district"); // Populating district details
+    .populate("role_id"); // Populating role details
 
   if (!users || users.length === 0) {
     throw new ApiError(404, "Users not found");

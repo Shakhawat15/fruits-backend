@@ -9,7 +9,7 @@ import {
   updateBlogStatus,
 } from "../contollers/blog.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
-import { imageUpload } from "../middlewares/multer.middleware.js";
+import { upload } from "../middlewares/multer.middleware.js";
 
 const router = express.Router();
 
@@ -21,13 +21,13 @@ router.get("/:id", getBlogById);
 router.post(
   "/create",
   verifyJWT,
-  imageUpload.single("cover_photo_path"),
+  upload.single("cover_photo_path"),
   createBlog
 );
 router.put(
   "/update/:id",
   verifyJWT,
-  imageUpload.single("cover_photo_path"),
+  upload.single("cover_photo_path"),
   updateBlog
 );
 router.patch("/status/:id", verifyJWT, updateBlogStatus);

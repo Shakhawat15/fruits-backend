@@ -1,20 +1,11 @@
 import mongoose, { Schema } from "mongoose";
 
-const imageGallerySchema = new Schema(
+const ProductTypeSchema = new mongoose.Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
       trim: true,
-    },
-    picture: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    gallery_folder: {
-      type: Schema.Types.ObjectId,
-      ref: "GalleryFolder",
     },
     status: {
       type: Number,
@@ -33,6 +24,6 @@ const imageGallerySchema = new Schema(
   { timestamps: true, versionKey: false }
 );
 
-const ImageGallery = mongoose.model("ImageGallery", imageGallerySchema);
+const ProductType = mongoose.model("ProductType", ProductTypeSchema);
 
-export default ImageGallery;
+export default ProductType;

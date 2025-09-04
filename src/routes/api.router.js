@@ -9,6 +9,8 @@ import commentRouter from "./comment.router.js";
 import newsRouter from "./news.router.js";
 import productTypeRouter from "./productType.router.js";
 import sellerRouter from "./seller.router.js";
+import productRouter from "./product.router.js";
+import orderRouter from "./order.router.js";
 
 const apiRouter = express.Router();
 
@@ -21,4 +23,7 @@ apiRouter.use("/districts", districtRouter);
 apiRouter.use("/countries", countryRouter);
 apiRouter.use("/comments", commentRouter);
 apiRouter.use("/news", newsRouter);
+apiRouter.use("/products", productRouter);
+apiRouter.use("/orders", orderRouter);
+
 export default apiRouter;

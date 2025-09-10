@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createSellerApplication,
+  deleteSeller,
   getAllSellers,
   updateSellerStatus,
 } from "../contollers/seller.controller.js";
@@ -13,5 +14,6 @@ const router = express.Router();
 router.post("/create", upload.single("documents"), createSellerApplication);
 router.get("/all", verifyJWT, getAllSellers);
 router.patch("/status/:id", verifyJWT, updateSellerStatus);
+router.delete("/delete/:id", verifyJWT, deleteSeller);
 
 export default router;

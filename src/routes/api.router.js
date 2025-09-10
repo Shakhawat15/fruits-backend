@@ -11,6 +11,7 @@ import productTypeRouter from "./productType.router.js";
 import sellerRouter from "./seller.router.js";
 import productRouter from "./product.router.js";
 import orderRouter from "./order.router.js";
+import dashboardRouter from "./dashboard.router.js";
 
 const apiRouter = express.Router();
 
@@ -25,5 +26,6 @@ apiRouter.use("/comments", commentRouter);
 apiRouter.use("/news", newsRouter);
 apiRouter.use("/products", productRouter);
 apiRouter.use("/orders", orderRouter);
+apiRouter.use("/dashboard", dashboardRouter);
 
 export default apiRouter;

@@ -134,4 +134,24 @@ const updateSellerStatus = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, seller, "Seller status updated successfully"));
 });
 
-export { createSellerApplication, getAllSellers, updateSellerStatus };
+// Delete Seller (and associated User) - Optional
+const deleteSeller = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const seller = await Seller.findByIdAndDelete(id);
+  if (!seller) {
+    throw new ApiError(404, "Seller not found");
+  } else {
+    // Also delete associated user
+    await UserModel.findByIdAndDelete(seller.user_id);
+  }
+  return res
+    .status(200)
+    .json(new ApiResponse(200, null, "Seller deleted successfully"));
+});
+
+export {
+  createSellerApplication,
+  getAllSellers,
+  updateSellerStatus,
+  deleteSeller,
+};
